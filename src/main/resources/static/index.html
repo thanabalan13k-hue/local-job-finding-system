@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Local Job Finding System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a class="logo" href="index.html">
+            <span class="logo-icon">✦</span>
+            Local<span>Job Finding System</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="resume-jobs.html">Resume Jobs</a>
+            <a href="companies.html">Companies</a>
+            <a href="about.html">About</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a class="post-job" href="post-job.html">Post a Job</a>
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="tag">
+                    YOUR LOCAL CAREER STARTS HERE
+                </p>
+
+                <h1>
+                    Find the right job
+                    <br>
+                    <span>near you.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Discover job opportunities from trusted companies
+                    in Tirunelveli and Tenkasi. Search locally,
+                    explore opportunities and apply directly.
+                </p>
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <div class="search-field">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="text"
+                            id="homeJobSearch"
+                            placeholder="Job title, skill or company">
+
+                    </div>
+
+
+                    <div class="search-field location">
+
+                        <span>⌖</span>
+
+                        <select id="homeDistrict">
+
+                            <option value="">
+                                Select district
+                            </option>
+
+                            <option value="Tirunelveli">
+                                Tirunelveli
+                            </option>
+
+                            <option value="Tenkasi">
+                                Tenkasi
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button id="homeSearchBtn">
+                        Search Jobs
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+                <!-- POPULAR SEARCH -->
+
+                <div class="popular">
+
+                    <strong>Popular:</strong>
+
+                    <a href="jobs.html?search=Java Developer">
+                        Java Developer
+                    </a>
+
+                    <a href="jobs.html?search=Web Developer">
+                        Web Developer
+                    </a>
+
+                    <a href="jobs.html?search=Accountant">
+                        Accountant
+                    </a>
+
+                    <a href="jobs.html?search=Digital Marketing">
+                        Digital Marketing
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= HERO VISUAL ================= -->
+
+            <div class="hero-visual">
+
+                <div class="circle circle-one"></div>
+                <div class="circle circle-two"></div>
+
+                <div class="career-card">
+
+                    <div class="card-top">
+
+                        <div class="profile-icon">
+                            💼
+                        </div>
+
+                        <div>
+
+                            <p class="small-title">
+                                LOCAL OPPORTUNITY
+                            </p>
+
+                            <h3>
+                                Find Jobs Near You
+                            </h3>
+
+                            <p class="company">
+                                Tirunelveli & Tenkasi
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="district-box">
+
+                        <div>
+                            <span class="district-icon">📍</span>
+                            <strong>Tirunelveli</strong>
+                        </div>
+
+                        <span>
+                            Local Jobs
+                        </span>
+
+                    </div>
+
+
+                    <div class="district-box">
+
+                        <div>
+                            <span class="district-icon">📍</span>
+                            <strong>Tenkasi</strong>
+                        </div>
+
+                        <span>
+                            Local Jobs
+                        </span>
+
+                    </div>
+
+
+                    <div class="career-message">
+
+                        <span class="check-icon">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Search. Match. Apply.
+                            </strong>
+
+                            <p>
+                                Find suitable local opportunities
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             NO STATS SECTION
+             ================================================== -->
+
+
+        <!-- ================= QUICK INFO ================= -->
+
+        <section class="quick-info">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🔎
+                </div>
+
+                <div>
+
+                    <h3>
+                        Search Local Jobs
+                    </h3>
+
+                    <p>
+                        Search jobs based on title, skill
+                        and district.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📄
+                </div>
+
+                <div>
+
+                    <h3>
+                        Use Your Resume
+                    </h3>
+
+                    <p>
+                        Upload your resume and discover
+                        matching opportunities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🔗
+                </div>
+
+                <div>
+
+                    <h3>
+                        Apply Directly
+                    </h3>
+
+                    <p>
+                        Apply through the company's
+                        official website.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESUME SECTION ================= -->
+
+        <section class="resume-section">
+
+            <div class="resume-content">
+
+                <p class="tag">
+                    SMART JOB RECOMMENDATION
+                </p>
+
+                <h2>
+                    Find jobs based on
+                    <span>your resume.</span>
+                </h2>
+                <p>
+                  Enter your qualification and skills
+                  to find matching opportunities.
+                </p>
+
+
+                <div class="resume-points">
+
+                    <div>
+                        <span>✓</span>
+                        Qualification matching
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Skill-based matching
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Suitable job recommendations
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="resume-jobs.html"
+                    class="primary-button">
+
+                    Find Suitable Jobs →
+
+                </a>
+
+            </div>
+
+
+            <div class="resume-visual">
+
+                <div class="resume-box">
+
+                    <div class="resume-header">
+
+                        <div class="resume-file-icon">
+                            📄
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Your Resume
+                            </strong>
+
+                            <p>
+                                Qualification & Skills
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resume-line large"></div>
+                    <div class="resume-line"></div>
+                    <div class="resume-line medium"></div>
+
+
+                    <div class="matching-box">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <strong>
+                                Job Matching
+                            </strong>
+
+                            <p>
+                                Based on your profile
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DISTRICT SECTION ================= -->
+
+        <section class="district-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="tag">
+                        LOCAL OPPORTUNITIES
+                    </p>
+
+                    <h2>
+                        Jobs in your district
+                    </h2>
+
+                    <p class="section-description">
+                        Explore opportunities available
+                        across the two districts covered
+                        by our system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="district-grid">
+
+                <a
+                    href="jobs.html?district=Tirunelveli"
+                    class="district-card">
+
+                    <div class="district-card-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Tirunelveli
+                        </h3>
+
+                        <p>
+                            Explore local job opportunities
+                            in Tirunelveli.
+                        </p>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="jobs.html?district=Tenkasi"
+                    class="district-card">
+
+                    <div class="district-card-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Tenkasi
+                        </h3>
+
+                        <p>
+                            Explore local job opportunities
+                            in Tenkasi.
+                        </p>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section
+            class="how-section"
+            id="how-it-works">
+
+            <div class="section-heading center">
+
+                <p class="tag">
+                    HOW IT WORKS
+                </p>
+
+                <h2>
+                    Find your next opportunity
+                    in three steps.
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Search
+                    </h3>
+
+                    <p>
+                        Search for jobs using job title,
+                        skills and district.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Explore
+                    </h3>
+
+                    <p>
+                        View company, job role,
+                        qualification and location details.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Apply
+                    </h3>
+
+                    <p>
+                        Apply directly through the
+                        company's official application link.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <a class="logo" href="index.html">
+
+            <span class="logo-icon">
+                ✦
+            </span>
+
+            Local <span>Job Finding System</span>
+
+        </a>
+
+        <p>
+            © 2026 Local Job Finding System. Connecting people with
+            local opportunities.
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

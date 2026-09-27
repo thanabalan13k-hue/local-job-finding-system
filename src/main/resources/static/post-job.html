@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Post a Job | Local Job Finding System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .post-page {
+            background: #f7f8fc;
+            min-height: calc(100vh - 100px);
+            padding: 65px 24px 90px;
+        }
+
+        .post-header {
+            max-width: 750px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .post-label {
+            color: #3158df;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .post-header h1 {
+            color: #17213c;
+            font-size: 42px;
+            margin: 0 0 15px;
+        }
+
+        .post-header h1 span {
+            color: #3158df;
+        }
+
+        .post-header p {
+            color: #707a94;
+            font-size: 17px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .post-form {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border: 1px solid #e7eaf2;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(30, 50, 100, 0.05);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section:last-of-type {
+            margin-bottom: 25px;
+        }
+
+        .form-section h2 {
+            color: #17213c;
+            font-size: 20px;
+            margin: 0 0 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            color: #25304b;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #3158df;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 14px;
+            border: 1px solid #dfe3ed;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            color: #30394f;
+            background: white;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3158df;
+        }
+
+        .form-hint {
+            color: #929aad;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .submit-area {
+            border-top: 1px solid #edf0f5;
+            padding-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .submit-note {
+            color: #7b8499;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .submit-button {
+            border: none;
+            border-radius: 10px;
+            padding: 14px 28px;
+            background: #3158df;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .submit-button:hover {
+            background: #2749c7;
+        }
+
+        .post-message {
+            max-width: 900px;
+            margin: 20px auto 0;
+            padding: 14px 18px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+
+        .post-message.success {
+            background: #edf9f3;
+            color: #22804a;
+        }
+
+        .post-message.error {
+            background: #fff1f1;
+            color: #c0392b;
+        }
+
+        @media (max-width: 700px) {
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .post-form {
+                padding: 25px 20px;
+            }
+
+            .post-header h1 {
+                font-size: 32px;
+            }
+
+            .submit-area {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .submit-button {
+                width: 100%;
+            }
+        }
+
+        .submit-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.submit-button {
+    min-width: 150px;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 10px;
+    background: #3157df;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #2447c5;
+}
+
+/* ================================
+   POST JOB - JOBSPHERE DESIGN
+================================ */
+
+.post-page {
+    background: #f8f9ff;
+    padding: 60px 20px 75px;
+}
+
+/* Header */
+
+.post-header {
+    max-width: 700px;
+    margin: 0 auto 35px;
+}
+
+.post-label {
+    margin-bottom: 9px;
+    color: #3158e6;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.post-header h1 {
+    margin: 0 0 12px;
+    color: #121937;
+    font-family: "Outfit", sans-serif;
+    font-size: 40px;
+    line-height: 1.15;
+    letter-spacing: -.5px;
+}
+
+.post-header h1 span {
+    color: #3158e6;
+}
+
+.post-header p {
+    color: #68708a;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* Main Form */
+
+.post-form {
+    max-width: 1050px;
+    padding: 30px;
+    border: 1px solid #e5e9f3;
+    border-radius: 15px;
+    box-shadow: 0 10px 28px rgba(18, 25, 55, .06);
+}
+
+/* Sections */
+
+.form-section {
+    margin-bottom: 28px;
+}
+
+.form-section h2 {
+    margin-bottom: 18px;
+    color: #121937;
+    font-family: "Outfit", sans-serif;
+    font-size: 18px;
+}
+
+/* Inputs */
+
+.form-row {
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    color: #202943;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.required {
+    color: #3158e6;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 11px 12px;
+    border: 1px solid #e1e6f0;
+    border-radius: 8px;
+    font-size: 11px;
+    color: #202943;
+    background: #ffffff;
+    transition: border-color .2s ease,
+                box-shadow .2s ease;
+}
+
+.form-group textarea {
+    min-height: 115px;
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #3158e6;
+    box-shadow: 0 0 0 3px rgba(49, 88, 230, .07);
+}
+
+.form-hint {
+    margin-top: 5px;
+    color: #929aad;
+    font-size: 9px;
+}
+
+/* Submit Area */
+
+.submit-area {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #edf0f6;
+}
+
+.submit-note {
+    color: #7d879d;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.submit-row {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.submit-button {
+    min-width: 135px;
+    padding: 11px 20px;
+    border-radius: 8px;
+    background: #3158e6;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.submit-button:hover {
+    background: #2345c9;
+    transform: translateY(-1px);
+}
+
+/* Message */
+
+.post-message {
+    max-width: 1050px;
+    margin: 18px auto 0;
+    padding: 11px 15px;
+    border-radius: 8px;
+    font-size: 10px;
+}
+
+.post-message.success {
+    background: #edf9f3;
+    color: #22804a;
+    border: 1px solid #d5efdf;
+}
+
+.post-message.error {
+    background: #fff1f1;
+    color: #c0392b;
+    border: 1px solid #f2d6d6;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .post-page {
+        padding: 45px 15px 60px;
+    }
+
+    .post-header h1 {
+        font-size: 32px;
+    }
+
+    .post-form {
+        padding: 22px 18px;
+        border-radius: 13px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .submit-area {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .submit-row {
+        width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+   <header class="navbar">
+
+    <a class="logo" href="index.html">
+        <span class="logo-icon">✦</span>
+        Local<span> Job Finding System</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="resume-jobs.html">Resume Jobs</a>
+        <a href="companies.html">Companies</a>
+        <a href="about.html">About</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+    <div class="nav-actions">
+        <a class="post-job" href="post-job.html">Post a Job</a>
+    </div>
+
+</header>
+
+
+    <main class="post-page">
+
+        <section class="post-header">
+
+            <div class="post-label">
+                FOR EMPLOYERS
+            </div>
+
+            <h1>
+                Post a <span>local job.</span>
+            </h1>
+
+            <p>
+                Share your company's employment opportunity with
+                job seekers across Tirunelveli and Tenkasi.
+            </p>
+
+        </section>
+
+
+        <form class="post-form" id="postJobForm"></form>
+
+            <!-- Company Details -->
+            <section class="form-section">
+
+                <h2>Company Details</h2>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="companyName">
+                            Company Name <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyName"
+                            placeholder="Enter company name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="companyEmail">
+                            Contact Email <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="companyEmail"
+                            placeholder="company@example.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="companyPhone">
+                            Contact Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="companyPhone"
+                            placeholder="Enter contact number"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="companyWebsite">
+                            Official Website
+                        </label>
+
+                        <input
+                            type="url"
+                            id="companyWebsite"
+                            placeholder="https://example.com"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Job Details -->
+            <section class="form-section">
+
+                <h2>Job Details</h2>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="jobTitle">
+                            Job Title <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="jobTitle"
+                            placeholder="Example: Java Developer"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="jobType">
+                            Job Type <span class="required">*</span>
+                        </label>
+
+                        <select id="jobType" required>
+
+                            <option value="">
+                                Select Job Type
+                            </option>
+
+                            <option value="Full Time">
+                                Full Time
+                            </option>
+
+                            <option value="Part Time">
+                                Part Time
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="district">
+                            District <span class="required">*</span>
+                        </label>
+
+                        <select id="district" required>
+
+                            <option value="">
+                                Select District
+                            </option>
+
+                            <option value="Tirunelveli">
+                                Tirunelveli
+                            </option>
+
+                            <option value="Tenkasi">
+                                Tenkasi
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            Job Location <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Example: Palayamkottai"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="qualification">
+                        Required Qualification
+                    </label>
+
+                    <input
+                        type="text"
+                        id="qualification"
+                        placeholder="Example: Degree / Diploma / 12th"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="skills">
+                        Required Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="Example: Java, MySQL, Communication"
+                    >
+
+                    <div class="form-hint">
+                        Separate multiple skills with commas.
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="salary">
+                        Salary
+                    </label>
+
+                    <input
+                        type="text"
+                        id="salary"
+                        placeholder="Example: ₹15,000 - ₹25,000"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="jobDescription">
+                        Job Description <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="jobDescription"
+                        placeholder="Describe the job role, responsibilities and requirements..."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </section>
+
+
+            <!-- Application Details -->
+            <section class="form-section">
+
+                <h2>Application Details</h2>
+
+                <div class="form-group">
+
+                    <label for="applyLink">
+                        Official Application Link
+                    </label>
+
+                    <input
+                        type="url"
+                        id="applyLink"
+                        placeholder="https://company.com/careers/apply"
+                    >
+
+                    <div class="form-hint">
+                        Job seekers will be redirected to this official
+                        application page when they click Apply.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div class="submit-area">
+
+                <div class="submit-note">
+                    Please provide accurate company and job information
+                    before submitting.
+                </div>
+
+                <div class="submit-row">
+    <button type="button" class="submit-button" id="postJobButton">
+        Post Job
+    </button>
+</div>
+
+            </div>
+
+        </form>
+
+
+        <div
+            class="post-message"
+            id="postMessage"
+        ></div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            Local<span> Job Finding System</span>
+        </div>
+
+        <p>
+            © 2026 LocalJobs. Connecting people with local opportunities.
+        </p>
+
+    </footer>
+
+
+    <script src="js/post-job.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Jobs | Local Job Finding System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .resume-page {
+            background: #f8f9ff;
+            padding: 60px 20px 80px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .resume-header {
+            max-width: 720px;
+            margin: 0 auto 38px;
+            text-align: center;
+        }
+
+        .resume-label {
+            margin-bottom: 10px;
+            color: #3158e6;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .resume-header h1 {
+            margin: 0 0 12px;
+            color: #121937;
+            font-family: "Outfit", sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .resume-header h1 span {
+            color: #3158e6;
+        }
+
+        .resume-header p {
+            margin: 0;
+            color: #68708a;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* Main card */
+
+        .resume-wrapper {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .resume-card {
+            background: white;
+            padding: 25px;
+            border: 1px solid #e5e9f3;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(18, 25, 55, 0.05);
+        }
+
+        .resume-card h2 {
+            margin: 0 0 7px;
+            color: #121937;
+            font-family: "Outfit", sans-serif;
+            font-size: 19px;
+        }
+
+        .resume-card-description {
+            margin-bottom: 20px;
+            color: #68708a;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #202943;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px 12px;
+            border: 1px solid #e1e6f0;
+            border-radius: 8px;
+            outline: none;
+            font-size: 11px;
+            color: #30394f;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #3158e6;
+            box-shadow: 0 0 0 3px rgba(49, 88, 230, .07);
+        }
+
+        .skills-hint {
+            margin-top: 5px;
+            color: #929aad;
+            font-size: 9px;
+        }
+
+        /* Button */
+
+        .find-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #3158e6;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .find-button:hover {
+            background: #2345c9;
+            transform: translateY(-1px);
+        }
+
+        .find-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Message */
+
+        .resume-message {
+            max-width: 650px;
+            margin: 20px auto 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: none;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .resume-message.error {
+            background: #fff1f1;
+            color: #c0392b;
+        }
+
+        .resume-message.success {
+            background: #edf9f3;
+            color: #22804a;
+        }
+
+        /* Steps */
+
+        .steps {
+            max-width: 1050px;
+            margin: 25px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .step {
+            padding: 20px;
+            border: 1px solid #e5e9f3;
+            border-radius: 13px;
+            background: white;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 11px;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #3158e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .step h3 {
+            margin: 0 0 6px;
+            color: #121937;
+            font-family: "Outfit", sans-serif;
+            font-size: 13px;
+        }
+
+        .step p {
+            margin: 0;
+            color: #68708a;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 800px) {
+
+            .resume-page {
+                padding: 45px 20px 60px;
+            }
+
+            .resume-header h1 {
+                font-size: 32px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <a class="logo" href="index.html">
+
+            <span class="logo-icon">✦</span>
+            Local<span> Job Finding System</span>
+
+        </a>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="jobs.html">Jobs</a>
+
+            <a href="resume-jobs.html">Resume Jobs</a>
+
+            <a href="companies.html">Companies</a>
+
+            <a href="about.html">About</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a class="post-job" href="post-job.html">
+                Post a Job
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Resume Jobs Page -->
+
+    <main class="resume-page">
+
+        <!-- Header -->
+
+        <section class="resume-header">
+
+            <div class="resume-label">
+                SMART JOB MATCHING
+            </div>
+
+            <h1>
+                Find Jobs Based on Your
+                <span>Skills.</span>
+            </h1>
+
+            <p>
+                Enter your name, qualification, skills and preferred district
+                to find suitable jobs in Tirunelveli and Tenkasi.
+            </p>
+
+        </section>
+
+
+        <!-- Candidate Details -->
+
+        <section class="resume-wrapper">
+
+            <div class="resume-card">
+
+                <h2>
+                    Your Job Preferences
+                </h2>
+
+                <p class="resume-card-description">
+                    Enter your details to find jobs that match your qualification,
+                    skills and preferred district.
+                </p>
+
+
+                <!-- Name -->
+
+                <div class="form-group">
+
+                    <label for="candidateName">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="candidateName"
+                        placeholder="Enter your name"
+                    >
+
+                </div>
+
+
+                <!-- Qualification -->
+
+                <div class="form-group">
+
+                    <label for="qualification">
+                        Qualification
+                    </label>
+
+                    <select id="qualification">
+
+                        <option value="">
+                            Select Qualification
+                        </option>
+
+                        <option value="10th">
+                            10th
+                        </option>
+
+                        <option value="12th">
+                            12th
+                        </option>
+
+                        <option value="Diploma">
+                            Diploma
+                        </option>
+
+                        <option value="Degree">
+                            Degree
+                        </option>
+
+                        <option value="Engineering">
+                            Engineering
+                        </option>
+
+                        <option value="Computer / IT">
+                            Computer / IT
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Skills -->
+
+                <div class="form-group">
+
+                    <label for="skills">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="Example: Java, MySQL, MS Office"
+                    >
+
+                    <div class="skills-hint">
+                        Separate multiple skills with commas.
+                    </div>
+
+                </div>
+
+
+                <!-- District -->
+
+                <div class="form-group">
+
+                    <label for="preferredDistrict">
+                        Preferred District
+                    </label>
+
+                    <select id="preferredDistrict">
+
+                        <option value="">
+                            Both Districts
+                        </option>
+
+                        <option value="Tirunelveli">
+                            Tirunelveli
+                        </option>
+
+                        <option value="Tenkasi">
+                            Tenkasi
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Find Jobs Button -->
+
+                <button
+                    type="button"
+                    class="find-button"
+                    id="findSuitableJobs"
+                >
+                    Find Suitable Jobs →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Message -->
+
+        <div
+            class="resume-message"
+            id="resumeMessage"
+        ></div>
+
+
+        <!-- How It Works -->
+
+        <section class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Enter Your Details
+                </h3>
+
+                <p>
+                    Enter your name and select your qualification.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Add Your Skills
+                </h3>
+
+                <p>
+                    Enter your important skills to improve job matching.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Get Suitable Jobs
+                </h3>
+
+                <p>
+                    Matching jobs will be shown based on your qualification,
+                    skills and district.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="logo">
+
+            <span class="logo-icon">✦</span>
+
+            Local<span> Job Finding System</span>
+
+        </div>
+
+        <p>
+            © 2026 Local Job Finding System. Connecting people with local opportunities.
+        </p>
+
+    </footer>
+
+
+    <script src="js/resume.js"></script>
+
+</body>
+
+</html>
